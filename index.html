@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cyberpunk Apartment</title>
+
+<head>
+  <title>Cyberpunk Apartment</title>
   <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script>
 </head>
 
 <body>
-	<a-scene>
+  <a-scene>
     <a-assets>
       <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
+      <a-asset-item id="couch" src="assets/couch.glb"></a-asset-item>
     </a-assets>
-    <a-image src="city.png" position="0.5 1 2.9" height="3" width="5"
-            light="type: point; color: white; intensity: 0.5"></a-image>
+    <a-entity position="-1 0.5 0" animation__1="property: object3D.position.y; to: .8 -; dir: alternate; dur: 2500; easing: easeInOutSine; loop: true">
+      <a-box color="#FFF" depth="2" height="0.25" width="1" rotation="0 90 0"></a-box>
+      <a-box color="#FFF" position="-0.9 0.15 0" depth="0.20" height="0.1" width=".75" rotation="0 90 0"></a-box>
+    </a-entity>
+    <a-image src="assets/city.png" position="0.5 1 2.9" height="3" width="5" light="type: point; color: white; intensity: 0.5"></a-image>
+    <a-gltf-model src="#couch" position="1.2 0.3 1.5" scale="0.3 0.3 0.3"></a-gltf-model>
     <a-entity id="lightSphere" position="0 2.75 0" geometry="primitive: sphere; radius: 0.5" material="color: #FFF; shader: flat" light="type:point"></a-entity>
-		<rw-room position="-2 0 -2" material="color:#171626">
-			<rw-wall position="5 0 0"></rw-wall>
-			<rw-wall position="5 0 5"></rw-wall>
-			<rw-wall position="0 0 5"></rw-wall>
+    <rw-room position="-2 0 -2" material="color:#171626">
+      <rw-wall position="5 0 0"></rw-wall>
+      <rw-wall position="5 0 5"></rw-wall>
+      <rw-wall position="0 0 5"></rw-wall>
       <rw-ceiling position="0 0 0" material="color:#15134C"></rw-ceiling>
       <rw-floor position="0 0 0" material="color:#171626"></rw-floor>
-			<rw-wall position="0 0 0">
-		  		<rw-doorhole id="holeA"></rw-doorhole>
-		  		<rw-doorlink from="#holeA" to="#holeB" position="2.5 0 0"></rw-doorlink>
-			</rw-wall>
-		</rw-room>
-		<rw-room position="0 0 -3">
-			<rw-wall position=" 1 0 -1" material="color:#171626"></rw-wall>
-			<rw-wall position=" 1 0  1" material="color:#171626">
-				<rw-doorhole id="holeB"></rw-doorhole>
-			</rw-wall>
-			<rw-wall position="-1 0  1" material="color:#171626"></rw-wall>
-			<rw-wall position="-1 0 -1" material="color:#171626"></rw-wall>
+      <rw-wall position="0 0 0">
+        <rw-doorhole id="holeA"></rw-doorhole>
+        <rw-doorlink from="#holeA" to="#holeB" position="2.5 0 0"></rw-doorlink>
+      </rw-wall>
+    </rw-room>
+    <rw-room position="0 0 -3">
+      <rw-wall position=" 1 0 -1" material="color:#171626"></rw-wall>
+      <rw-wall position=" 1 0  1" material="color:#171626">
+        <rw-doorhole id="holeB"></rw-doorhole>
+      </rw-wall>
+      <rw-wall position="-1 0  1" material="color:#171626"></rw-wall>
+      <rw-wall position="-1 0 -1" material="color:#171626"></rw-wall>
       <rw-floor position="0 0 0" material="color:#171626"></rw-floor>
-		</rw-room>
+    </rw-room>
     <a-sky src="#sky" rotation="0 -90 0"></a-sky>
-	</a-scene>
-  </body>
+  </a-scene>
+</body>
+
 </html>
