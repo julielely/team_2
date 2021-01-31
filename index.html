@@ -10,17 +10,25 @@
 
 <body>
   <a-scene>
+
+    <!-- Assets -->
     <a-assets>
       <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
       <a-asset-item id="couch" src="assets/couch-2.glb"></a-asset-item>
+      <a-asset-item id="bed" src="assets/bed-1.glb"></a-asset-item>
     </a-assets>
-    <a-entity position="-1 0.5 0" animation__1="property: object3D.position.y; to: .8 -; dir: alternate; dur: 2500; easing: easeInOutSine; loop: true">
-      <a-box color="#FFF" depth="2" height="0.25" width="1" rotation="0 90 0"></a-box>
-      <a-box color="#FFF" position="-0.9 0.15 0" depth="0.20" height="0.1" width=".75" rotation="0 90 0"></a-box>
-    </a-entity>
+    
     <a-image src="assets/city.png" position="0.5 1 2.9" height="3" width="5" light="type: point; color: white; intensity: 0.5"></a-image>
-    <a-gltf-model src="#couch" position="1.2 0.3 1.5" scale="0.3 0.3 0.3"></a-gltf-model>
-    <a-entity id="lightSphere" position="0 2.75 0" geometry="primitive: sphere; radius: 0.5" material="color: #FFF; shader: flat" light="type:point"></a-entity>
+    <a-gltf-model src="#couch" position="2 0.3 2" scale="0.4 0.4 0.4" rotation="0 180 0"dw></a-gltf-model>
+    <a-entity position="-1.2 0.2 1" animation__1="property: object3D.position.y; to: 0.3; dir: alternate; dur: 2500; easing: easeInOutSine; loop: true">
+      <a-gltf-model src="#bed" scale="0.6 0.6 0.6" rotation="0 90 0"></a-gltf-model>
+    </a-entity>
+
+    <!-- Lighting -->
+    <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+    <a-entity id="lightSphere" position="0 2.75 0" geometry="primitive: sphere; radius: 0.5" material="color: #FFF; shader: flat" light="type:point; intensity: 0.6; castShadow: true;"></a-entity>
+
+    <!--- Room Component -->
     <rw-room position="-2 0 -2" material="color:#171626">
       <rw-wall position="5 0 0"></rw-wall>
       <rw-wall position="5 0 5"></rw-wall>
@@ -41,7 +49,10 @@
       <rw-wall position="-1 0 -1" material="color:#171626"></rw-wall>
       <rw-floor position="0 0 0" material="color:#171626"></rw-floor>
     </rw-room>
+
+    <!--- Sky -->
     <a-sky src="#sky" rotation="0 -90 0"></a-sky>
+
   </a-scene>
 </body>
 
